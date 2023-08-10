@@ -1,0 +1,15 @@
+# Ignorar el ambiente virtual (venv)
+venv/
+
+# Ignorar archivos de datos de usuario
+app/data/*.json
+
+# Ignorar archivos de registro y caché (si se generan)
+*.log
+__pycache__/
+*.pyc
+
+# Ignorar archivos de dependencias instaladas
+*.egg-info/
+dist/
+build/
