@@ -1,19 +1,18 @@
-import argparse
+from app import cli, core
 
-from app import core
 
 def main():
-    parser = argparse.ArgumentParser(description='Project CLI')
-    parser.add_argument('--option', help='Specify an option', choices=['option1', 'option2'])
-    # Add more CLI arguments as needed
-    args = parser.parse_args()
+  option_actions = {
+      'optionA': core.do_optionA,
+      'optionB': core.do_optionB,
+      'exit': lambda: print("\n Thank you for using the Project CLI. Goodbye! \n")
+  }
 
-    if args.option == 'option1':
-        core.do_option1()
-    elif args.option == 'option2':
-        core.do_option2()
-    else:
-        print("Invalid option. Use --help for usage information.")
+  selected_option = cli.run_cli()
+  action = option_actions.get(selected_option)
+
+  if action:
+      action()
 
 if __name__ == '__main__':
     main()
